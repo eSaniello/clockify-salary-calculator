@@ -23,6 +23,7 @@ def calcPay(name):
         total_hours = 0
         billable_amount = 0
         billable_amount_extra = 0
+        rate = 0
         for row in csv_reader:
             if line_count == 0:
                 print(f'Column names are {", ".join(row)}')
@@ -44,6 +45,7 @@ def calcPay(name):
                 total_hours += float(row["Duration (decimal)"])
                 billable_amount += float(row["Billable Amount (USD)"])
                 billable_amount_extra += todays_billable
+                rate = float(row["Billable Rate (USD)"])
 
             line_count += 1
 
@@ -53,9 +55,10 @@ def calcPay(name):
 
         print(f'Processed {line_count} lines.')
         print("=====================================")
-        print("total hours:", total_hours)
-        print("billable amount (USD):", billable_amount)
-        print("billable amount extra (USD):", billable_amount_extra)
+        print("Total hours:", total_hours)
+        print("Rate (USD):", rate)
+        print("Billable amount (USD):", billable_amount)
+        print("Billable amount extra (USD):", billable_amount_extra)
         print("=====================================")
 
 # call function
